@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import{ActivatedRoute} from '@angular/router';
 import { ProductService } from '../product.service';
 
 @Component({
@@ -10,16 +10,25 @@ import { ProductService } from '../product.service';
 export class ProductListingComponent implements OnInit {
   products:any=[];
   isLoading=true;
-  constructor(private productService:ProductService ) { }
+  con_msg:boolean;
+  msg:any=false;
+  constructor(private productService:ProductService,
+    private activatedRoute:ActivatedRoute ) { }
 
   ngOnInit(): void {
     this.fetchData();
   }
+
   onDelete(id:any){
-    this.productService.deleteProduct(id).subscribe(()=>{this.fetchData();
-      console.log(id);
-    })
+    this.con_msg=confirm("Do u want to delete this item for sure");
+    if(this.con_msg===true){
+      this.productService.deleteProduct(id).subscribe(()=>{this.fetchData();
+        console.log(id);
+      })
+    }
+    
   }
+ 
   fetchData(){
     this.productService.getProducts().subscribe(res=>{
       this.products=res;
