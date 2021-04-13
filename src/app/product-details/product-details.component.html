@@ -1,4 +1,10 @@
 <div class="row mt-4">
+    <div class="col-12" style="text-align: center;" *ngIf="isLoading">
+        <div class="spinner-border text-danger" role="status">
+          <span class="sr-only">Loading...</span>
+        </div><p style="color:purple;">Waiting for response from server</p>
+      </div>  
+    <ng-container *ngIf="!isLoading">
     <div class="col">
         <div class="card mb-4" *ngIf="product">
             <img src="{{product.imageUrl}}" class="card-img-top" alt="...">
@@ -7,8 +13,8 @@
                 <p class="card-text">{{product.description}}</p>
             </div>
             <div class="card-body">
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <a href="#" class="btn btn-primary">Go Back</a>
             </div>
         </div>
     </div>
-</div>
+</ng-container>

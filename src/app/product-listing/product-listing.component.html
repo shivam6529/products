@@ -3,9 +3,9 @@
 
 <div class="row mt-4">
   <div class="col-12" style="text-align: center;" *ngIf="isLoading">
-    <div class="spinner-border text-center" role="status">
+    <div class="spinner-border text-success" role="status">
       <span class="sr-only">Loading...</span>
-    </div>
+    </div><p style="color:purple;">Waiting for response from server</p>
   </div>  
 <ng-container *ngIf="!isLoading">
     <div class="col-4 mt-4" *ngFor="let product of products">

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import{Router} from '@angular/router';
 
 import { ProductService } from '../product.service';
 
@@ -11,8 +10,7 @@ import { ProductService } from '../product.service';
 export class ProductListingComponent implements OnInit {
   products:any=[];
   isLoading=true;
-  constructor(private productService:ProductService ,
-    private router:Router) { }
+  constructor(private productService:ProductService ) { }
 
   ngOnInit(): void {
     this.fetchData();

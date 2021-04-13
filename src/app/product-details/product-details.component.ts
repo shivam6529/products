@@ -10,16 +10,20 @@ import { ProductService } from '../product.service';
 })
 export class ProductDetailsComponent implements OnInit {
   product:any=null;
-
+  isLoading=true;
   constructor( private productService: ProductService,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params=>{
       this.productService.getProductDetails(params.id)
       .subscribe(res=>{
-        this.product=res;
+        this.product=res
+      },err=>{
+        console.log(err)
+      },()=>{
+        this.isLoading=false;
       })
-    });
+    })
   }
 
 }
